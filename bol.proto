@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package bolproto;
+
+service PriceEvaluator {
+    rpc EvaluatePrice (PriceEvaluationRequest) returns (PriceEvaluationResponse) {}
+}
+
+message Price {
+    float price = 1;
+		int64 timestamp = 2;
+}
+
+message PriceEvaluationRequest {
+		Price currentPrice = 1;
+    repeated Price historicalPrices = 2;
+}
+
+message PriceEvaluationResponse {
+    string action = 1;
+}
